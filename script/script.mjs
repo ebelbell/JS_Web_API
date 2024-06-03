@@ -13,22 +13,31 @@ async function fetchData() {
     try {
         // Two lines. Fetches data. The "await" means to wait for the data to be fetched
         const results = await fetch("https://api.disneyapi.dev/character"); //fetch the server and go to the list of disney characters
-        if(!results.valid) {
+
+        if(!results.ok) {
         // console.log(result);
         throw new Error("Network response was not valid");
-        } 
+    } 
 
         const data = await results.json();
         console.log(data);
+
+        // create a delay for each character name
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
         
-        
-        // Loops through the list of pokemon fetched from the api
-        for (let i = 0; i < data.results.length; i++) {
+
+        // Loops through the list of Disney characters fetched from the api
+        for (let i = 0; i < data.data.length; i++) {
+            // wait 2 seconds before displaying each character's name
+            await delay(1000);
+
             // create a new h1 element
-            const nameDisplay = document.createElement('h1'); //select h1 and assign it to something 
+            const nameDisplay = document.createElement("h1"); //select h1 and assign it to something 
         
             // sets the text of the element to the disney characters' name
-            nameDisplay.innerText = data.results[i].name;
+            nameDisplay.innerText = data.data[i].name;
 
             // displays the element by appending it to the body
             document.querySelector("body").appendChild(nameDisplay);
