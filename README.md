@@ -8,5 +8,5 @@ Organize files using modules and imports.
 */ 
 
 
-Disney characters API: https://api.disneyapi.dev/character
+Avatar the Last Airbender API: https://last-airbender-api.fly.dev/
 Assignment: https://www.canva.com/design/DAFtDB2xfOk/xEpMguB7x3VPSkrx3KaJgw/edit
